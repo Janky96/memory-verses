@@ -86,7 +86,6 @@ next.addEventListener("click", () => {
 });
 
 shuffle.addEventListener("click", () => {
-  debugger;
   hideNext = true;
   checkIconsVisibility();
   index = getRandomInt(memoryVerses.length - 1);

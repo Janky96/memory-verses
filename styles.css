@@ -111,10 +111,12 @@ body::before {
   }
 
   h1 {
+    text-align: center;
     font-size: 48px;
   }
 
   p {
+    text-align: center;
     font-size: 26px;
   }
 
@@ -158,6 +160,14 @@ body::before {
     width: 300px;
     height: 400px;
     perspective: 800px;
+  }
+
+  h1 {
+    font-size: 36px;
+  }
+
+  p {
+    font-size: 18px;
   }
 
   .icons-container {
