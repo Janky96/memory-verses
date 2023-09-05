@@ -159,4 +159,8 @@ body::before {
     height: 400px;
     perspective: 800px;
   }
+
+  .icons-container {
+    bottom: 5%;
+  }
 }
