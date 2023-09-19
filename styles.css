@@ -27,6 +27,31 @@ body::before {
   z-index: -1;
 }
 
+.flags-section {
+  position:relative;
+}
+
+.flags-container {
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+}
+
+.fi:hover {
+  cursor: pointer;
+}
+
+.fi {
+  font-size: 48px;
+}
+
+.fi.disabled {
+  filter: grayscale(100%);
+}
+
 .container {
   width: 350px;
   height: 500px;

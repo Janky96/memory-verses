@@ -12,16 +12,18 @@ const backContainer = document.querySelector(".back-container");
 const shuffle = document.querySelector(".ph-shuffle");
 const home = document.querySelector(".ph-house");
 const next = document.querySelector(".ph-arrow-right");
+const flags = document.querySelectorAll(".fi");
+let selectedLanguage = "eng";
 let memoryVerses;
 let hideRandom = false;
 let hideNext = false;
 let index = 0;
 
-getData();
+getData(selectedLanguage);
 checkIconsVisibility();
 
-async function getData() {
-  fetch("./memory-verses.json").then(res => res.json())
+async function getData(language) {
+  fetch(`./resources/memory-verses-${language}.json`).then(res => res.json())
     .then(data => {
     memoryVerses = shuffleArray(data);
     generateCardFromArray(index);
@@ -60,13 +62,17 @@ function generateCard(verse, content) {
   }, 1000);
 }
 
-home.addEventListener("click", () => {
+function tornaAHome() {
   hideRandom = false;
   hideNext = false;
   checkIconsVisibility();
-  memoryVerses = shuffleArray(memoryVerses);
   index = 0;
   generateCardFromArray(index);
+}
+
+home.addEventListener("click", () => {
+  memoryVerses = shuffleArray(memoryVerses);
+  tornaAHome();
 });
 
 next.addEventListener("click", () => {
@@ -90,6 +96,19 @@ shuffle.addEventListener("click", () => {
   checkIconsVisibility();
   index = getRandomInt(memoryVerses.length - 1);
   generateCardFromArray(index);
+});
+
+flags.forEach(flag => {
+  flag.addEventListener("click", () => {
+    if(flag.classList.contains("disabled")) {
+      flags.forEach(flagToDisable => {
+        flagToDisable.classList.add("disabled");
+      })
+      flag.classList.remove("disabled");
+      getData(flag.dataset.language);
+      tornaAHome();
+    }
+  }); 
 });
 
 
